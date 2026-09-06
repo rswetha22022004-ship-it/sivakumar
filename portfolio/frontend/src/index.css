@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+}
+
+::selection {
+  @apply bg-accent/30 text-white;
+}
+
+.container-px {
+  @apply px-6 sm:px-8 lg:px-12;
+}
+
+.section {
+  @apply max-w-6xl mx-auto container-px py-14 sm:py-20;
+}
+
+.section-label {
+  @apply inline-flex items-center gap-2 text-accent font-mono text-xs tracking-widest uppercase mb-4;
+}
+
+.section-heading {
+  @apply text-3xl sm:text-4xl font-extrabold text-white tracking-tight;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-ink-600 bg-ink-800/60 px-3 py-1 text-xs font-medium text-slate-300;
+}
+
+.badge-primary {
+  @apply border-accent/40 bg-accent/10 text-accent;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-accent text-ink-950 hover:bg-accent-light;
+}
+
+.btn-outline {
+  @apply border border-ink-500 text-slate-200 hover:border-accent hover:text-accent;
+}
+
+.card {
+  @apply rounded-2xl border border-ink-700 bg-ink-900/60 shadow-card transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply shadow-[0_8px_24px_-8px_rgba(61,217,193,0.55)];
+}
+
+.btn:active {
+  @apply scale-[0.98];
+}
+
+@keyframes animated-name-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-name-char {
+  display: inline-block;
+  animation-duration: 650ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animated-name-reveal {
+  animation-name: animated-name-reveal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-name-char {
+    animation: none;
+  }
+}
