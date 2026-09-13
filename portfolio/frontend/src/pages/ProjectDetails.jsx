@@ -37,12 +37,13 @@ export default function ProjectDetails() {
   const image = mediaUrl(project.image);
 
   return (
-    <div className="section pt-32 sm:pt-40">
-      <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-accent mb-8">
+    <div className="page-entrance">
+      <div className="section pt-32 sm:pt-40">
+      <Link to="/" className="entrance-action inline-flex items-center gap-2 text-sm text-slate-400 hover:text-accent mb-8">
         <ArrowLeft className="h-4 w-4" /> Back to projects
       </Link>
 
-      <div className="h-56 sm:h-80 w-full rounded-2xl bg-gradient-to-br from-ink-800 to-ink-700 flex items-center justify-center overflow-hidden mb-10">
+      <div className="entrance-card h-56 sm:h-80 w-full rounded-2xl bg-gradient-to-br from-ink-800 to-ink-700 flex items-center justify-center overflow-hidden mb-10">
         {image ? (
           <img src={image} alt={project.title} className="h-full w-full object-cover" />
         ) : (
@@ -50,8 +51,8 @@ export default function ProjectDetails() {
         )}
       </div>
 
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-white">{project.title}</h1>
-      <p className="mt-4 max-w-3xl text-slate-400 leading-relaxed">
+      <h1 className="entrance-heading text-3xl sm:text-4xl font-extrabold text-white">{project.title}</h1>
+      <p className="entrance-subtitle mt-4 max-w-3xl text-slate-400 leading-relaxed">
         {project.full_description || project.short_description}
       </p>
 
@@ -61,7 +62,7 @@ export default function ProjectDetails() {
         </div>
       )}
 
-      <div className="mt-8 flex flex-wrap gap-4">
+      <div className="entrance-action mt-8 flex flex-wrap gap-4">
         {project.live_url && (
           <a href={project.live_url} target="_blank" rel="noreferrer" className="btn btn-primary">
             Live Demo <ExternalLink className="h-4 w-4" />
@@ -75,7 +76,7 @@ export default function ProjectDetails() {
       </div>
 
       {project.features?.length > 0 && (
-        <div className="mt-12">
+        <div className="entrance-card mt-12">
           <h2 className="text-xl font-bold text-white mb-4">Features</h2>
           <ul className="grid gap-2.5 sm:grid-cols-2">
             {project.features.map((f, i) => (
@@ -88,7 +89,7 @@ export default function ProjectDetails() {
       )}
 
       {project.role_responsibilities?.length > 0 && (
-        <div className="mt-12">
+        <div className="entrance-card mt-12">
           <h2 className="text-xl font-bold text-white mb-4">Role &amp; Responsibilities</h2>
           <ul className="grid gap-2.5 sm:grid-cols-2">
             {project.role_responsibilities.map((r, i) => (
@@ -99,6 +100,7 @@ export default function ProjectDetails() {
           </ul>
         </div>
       )}
+      </div>
     </div>
   );
 }

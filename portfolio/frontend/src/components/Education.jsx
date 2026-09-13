@@ -1,9 +1,10 @@
 import { GraduationCap } from 'lucide-react';
+import TextGenerateEffect from './TextGenerateEffect';
 
 export default function Education({ education }) {
   return (
     <section id="education" className="section">
-      <h2 className="section-heading">Education</h2>
+      <TextGenerateEffect as="h2" className="section-heading">Education</TextGenerateEffect>
 
       {education?.length ? (
         <div className="mt-10 space-y-5">
@@ -13,10 +14,14 @@ export default function Education({ education }) {
                 <GraduationCap className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-white font-bold">{edu.degree}</h3>
-                <p className="text-accent text-sm">{edu.institution} · {edu.year}</p>
+                <TextGenerateEffect as="h3" className="text-white font-bold">{edu.degree}</TextGenerateEffect>
+                <p className="text-accent text-sm">
+                  <TextGenerateEffect>{edu.institution}</TextGenerateEffect>
+                  <span aria-hidden="true"> · </span>
+                  <TextGenerateEffect>{edu.year}</TextGenerateEffect>
+                </p>
                 {edu.description && (
-                  <p className="mt-2 text-sm text-slate-400">{edu.description}</p>
+                  <TextGenerateEffect as="p" className="mt-2 text-sm text-slate-400">{edu.description}</TextGenerateEffect>
                 )}
               </div>
             </div>

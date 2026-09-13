@@ -8,10 +8,12 @@ import usePortfolioData from './hooks/usePortfolioData';
 function Layout({ children }) {
   const { profile } = usePortfolioData();
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="site-spotlight min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1">{children}</main>
-      <Footer profile={profile} />
+      <main className="relative z-10 flex-1">{children}</main>
+      <div className="relative z-10">
+        <Footer profile={profile} />
+      </div>
     </div>
   );
 }

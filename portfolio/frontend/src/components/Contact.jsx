@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { sendContactMessage } from '../services/api';
+import TextGenerateEffect from './TextGenerateEffect';
 
 const initialForm = { name: '', email: '', subject: '', message: '' };
 
@@ -24,25 +25,56 @@ export default function Contact({ profile }) {
 
   return (
     <section id="contact" className="section">
-      <h2 className="section-heading">Contact</h2>
+      <TextGenerateEffect as="h2" className="section-heading">Contact</TextGenerateEffect>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-5">
         <div className="lg:col-span-2 space-y-5">
-          <a href={`mailto:${profile.email}`} className="card p-5 flex items-center gap-4 hover:border-accent/50 transition-colors">
+          <a
+            href={`mailto:${profile.email}`}
+            className="skills-hover-card card relative overflow-hidden p-5 flex items-center gap-4 hover:border-accent/50 transition-colors"
+            onMouseMove={(event) => {
+              const bounds = event.currentTarget.getBoundingClientRect();
+              event.currentTarget.style.setProperty('--mouse-x', `${event.clientX - bounds.left}px`);
+              event.currentTarget.style.setProperty('--mouse-y', `${event.clientY - bounds.top}px`);
+            }}
+          >
             <Mail className="h-5 w-5 text-accent" />
-            <span className="text-slate-300 text-sm break-all">{profile.email}</span>
+            <TextGenerateEffect as="span" className="text-slate-300 text-sm break-all">{profile.email}</TextGenerateEffect>
           </a>
-          <a href={`tel:${profile.phone}`} className="card p-5 flex items-center gap-4 hover:border-accent/50 transition-colors">
+          <a
+            href={`tel:${profile.phone}`}
+            className="skills-hover-card card relative overflow-hidden p-5 flex items-center gap-4 hover:border-accent/50 transition-colors"
+            onMouseMove={(event) => {
+              const bounds = event.currentTarget.getBoundingClientRect();
+              event.currentTarget.style.setProperty('--mouse-x', `${event.clientX - bounds.left}px`);
+              event.currentTarget.style.setProperty('--mouse-y', `${event.clientY - bounds.top}px`);
+            }}
+          >
             <Phone className="h-5 w-5 text-accent" />
-            <span className="text-slate-300 text-sm">{profile.phone}</span>
+            <TextGenerateEffect as="span" className="text-slate-300 text-sm">{profile.phone}</TextGenerateEffect>
           </a>
-          <div className="card p-5 flex items-center gap-4">
+          <div
+            className="skills-hover-card card relative overflow-hidden p-5 flex items-center gap-4"
+            onMouseMove={(event) => {
+              const bounds = event.currentTarget.getBoundingClientRect();
+              event.currentTarget.style.setProperty('--mouse-x', `${event.clientX - bounds.left}px`);
+              event.currentTarget.style.setProperty('--mouse-y', `${event.clientY - bounds.top}px`);
+            }}
+          >
             <MapPin className="h-5 w-5 text-accent" />
-            <span className="text-slate-300 text-sm">{profile.location}</span>
+            <TextGenerateEffect as="span" className="text-slate-300 text-sm">{profile.location}</TextGenerateEffect>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="lg:col-span-3 card p-6 sm:p-8 space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="skills-hover-card card relative overflow-hidden lg:col-span-3 p-6 sm:p-8 space-y-4"
+          onMouseMove={(event) => {
+            const bounds = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty('--mouse-x', `${event.clientX - bounds.left}px`);
+            event.currentTarget.style.setProperty('--mouse-y', `${event.clientY - bounds.top}px`);
+          }}
+        >
           <div className="grid gap-4 sm:grid-cols-2">
             <input
               required name="name" placeholder="Your Name" value={form.name} onChange={handleChange}
@@ -68,13 +100,14 @@ export default function Contact({ profile }) {
 
           {status === 'sent' && (
             <p className="flex items-center gap-2 text-sm text-accent">
-              <CheckCircle2 className="h-4 w-4" /> Message sent successfully. Thank you!
+              <CheckCircle2 className="h-4 w-4" />
+              <TextGenerateEffect as="span">Message sent successfully. Thank you!</TextGenerateEffect>
             </p>
           )}
           {status === 'error' && (
-            <p className="text-sm text-red-400">
+            <TextGenerateEffect as="p" className="text-sm text-red-400">
               Something went wrong. Please make sure the backend server is running and try again.
-            </p>
+            </TextGenerateEffect>
           )}
         </form>
       </div>

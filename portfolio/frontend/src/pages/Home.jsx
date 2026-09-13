@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="page-entrance">
       <Hero profile={profile} />
       <About profile={profile} />
       <Experience experience={experience} />
@@ -27,6 +27,6 @@ export default function Home() {
       <Projects projects={projects} />
       <Education education={education} />
       <Contact profile={profile} />
-    </>
+    </div>
   );
 }
